@@ -1,0 +1,17 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Only one CleanProfs configuration is allowed."
+    },
+    "step": {
+      "user": {
+        "title": "CleanProfs",
+        "description": "Enter your address details.",
+        "data": {
+          "zipcode": "Zipcode",
+          "house_number": "House number"
+        }
+      }
+    }
+  }
+}

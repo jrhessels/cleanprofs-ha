@@ -1,0 +1,17 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Er is maar één CleanProfs-configuratie toegestaan."
+    },
+    "step": {
+      "user": {
+        "title": "CleanProfs",
+        "description": "Vul je adresgegevens in.",
+        "data": {
+          "zipcode": "Postcode",
+          "house_number": "Huisnummer"
+        }
+      }
+    }
+  }
+}

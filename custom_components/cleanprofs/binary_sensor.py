@@ -8,6 +8,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.helpers.device_registry import DeviceInfo
 
 from .const import DOMAIN, FIXED_PRODUCTS
+from .entity import CleanProfsBaseEntity
 from .util import isoToday, nextDate
 
 # Create binary sensor entities for the config entry.
@@ -15,21 +16,21 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry,async_add_en
     coordinator = hass.data[DOMAIN]["coordinator"]
 
     desc = BinarySensorEntityDescription(
-        key="cleanprofs_cleaning",
+        key="cleaning",
         name= "Cleanprofs Cleaning",
         icon="mdi:trash-can"
     )
 
-    async_add_entities([CleanProfsCleaningBinarySensor(coordinator, desc)])
+    async_add_entities([CleanProfsCleaningBinarySensor(coordinator, entry, desc)])
                        
-class CleanProfsCleaningBinarySensor(CoordinatorEntity, BinarySensorEntity):
+class CleanProfsCleaningBinarySensor(CleanProfsBaseEntity, BinarySensorEntity):
     # Binary sensor that turns on when *any* product has to be cleaned
     _attr_has_entity_name = True
 
-    def __init__(self, coordinator, description: BinarySensorEntityDescription) -> None:
-        super().__init__(coordinator)
+    def __init__(self, coordinator, entry: ConfigEntry, description: BinarySensorEntityDescription) -> None:
+        super().__init__(coordinator, entry)
         self.entity_description = description
-        self._attr_unique_id = "cleanprofs_cleaning"
+        self._attr_unique_id = f"{entry.entry_id}_cleaning"
 
 
     @property
@@ -46,7 +47,7 @@ class CleanProfsCleaningBinarySensor(CoordinatorEntity, BinarySensorEntity):
     @property
     def extra_state_attributes(self):
         items = self.coordinator.data or []
-        today = isoToday
+        today = isoToday()
 
         cleaningProducts: list[str] = []
         nextDates: dict[str, str | None] = {}
@@ -59,14 +60,6 @@ class CleanProfsCleaningBinarySensor(CoordinatorEntity, BinarySensorEntity):
         
         return {
             "cleaningProductToday": cleaningProducts,
-            "NextDates": nextDates
+            "nextdates": nextDates
         }
     
-    @property
-    def device_info(self) -> DeviceInfo:
-        return DeviceInfo(
-            identifiers={(DOMAIN, "cleanprofs_device")},
-            name="CleanProfs",
-            manufacturer="CleanProfs",
-            model="Planning API",
-        )

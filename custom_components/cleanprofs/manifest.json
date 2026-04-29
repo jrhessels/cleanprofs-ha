@@ -1,10 +1,11 @@
 {
   "domain": "cleanprofs",
   "name": "CleanProfs",
-  "version": "2026.4.29",
-  "documentation": "https://example.invalid",
+  "version": "2026.4.30",
+  "documentation": "https://github.com/jrhessels/cleanprofs-ha",
   "requirements": [],
   "codeowners": ["@jrhessels"],
   "config_flow": true,
-  "iot_class": "cloud_polling"
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/jrhessels/cleanprofs-ha/issues"
 }

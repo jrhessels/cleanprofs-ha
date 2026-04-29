@@ -1,7 +1,7 @@
 {
   "domain": "cleanprofs",
   "name": "CleanProfs",
-  "version": "2026.4.30",
+  "version": "2026.4.29",
   "documentation": "https://github.com/jrhessels/cleanprofs-ha",
   "requirements": [],
   "codeowners": ["@jrhessels"],

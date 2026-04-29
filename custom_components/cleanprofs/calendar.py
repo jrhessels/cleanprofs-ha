@@ -21,7 +21,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 class CleanProfsCalendar(CoordinatorEntity, CalendarEntity):
     # Calendat entity that exposes pickup dates as all-day events,
     _attr_has_entity_name = True
-    _attr_name = "Schedule" 
+    _attr_name = "Cleanrpofs Schedule" 
     _attr_icon = "mdi:calendar-trash"
     _attr_unique_id = "cleanprofs_calendar"
 

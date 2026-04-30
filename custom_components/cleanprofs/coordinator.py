@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import aiohttp
+import asyncio
 from datetime import datetime
 
 from homeassistant.core import HomeAssistant
@@ -46,5 +47,9 @@ class CleanProfsCoordinator(DataUpdateCoordinator[list[dict]]):
             # Sort for stable ordering.
             out.sort(key=lambda r: ((r.get("product_name") or ""), (r.get("full_date") or "")))
             return out
-        except (aiohttp.ClientError, aiohttp.ClientResponseError, ValueError) as err:
-            raise UpdateFailed(str(err)) from err
+        except (asyncio.TimeoutError, aiohttp.ClientError, aiohttp.ClientResponseError) as err:
+            raise UpdateFailed(f"Connection error: {err}") from err
+        except ValueError as err:
+            raise UpdateFailed(f"Invalid  response: {err}") from err
+        except Exception as err:
+            raise UpdateFailed(f"Unexpected error: {err}")

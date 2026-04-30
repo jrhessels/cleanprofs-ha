@@ -1,5 +1,6 @@
 from __future__ import annotations
 import aiohttp
+import asyncio
 
 # Import API url
 from .const import API_URL
@@ -10,28 +11,26 @@ class CleanProfsApi:
         self._session = session
     
     # Fetch planning data from the CleanProfs endpoint and return a list of dict items.
-    async def fetch_planning(
-            self,
-            zipCode: str,
-            houseNumber: str,
-            startDate: str,
-            endDate: str
-    ) ->list[dict]:
+    async def fetch_planning(self, zipCode: str, houseNumber: str, startDate: str, endDate: str) ->list[dict]:
         params = {
             "zipcode": zipCode,
             "house_number": houseNumber,
             "start_date": startDate,
             "end_date": endDate
         }
-        async with self._session.get(
-            API_URL,
-            params=params,
-            timeout=aiohttp.ClientTimeout(total=30)
-        ) as resp:
-            resp.raise_for_status()
-            data = await resp.json()
-        
+        try:
+            async with self._session.get(
+                API_URL,
+                params=params,
+                timeout=aiohttp.ClientTimeout(total=30)
+            ) as resp:
+                resp.raise_for_status()
+                data = await resp.json()
+        except asyncio.TimeoutError as err:
+            raise aiohttp.ClientError("Timeout while calling Cleanprofs") from err
+    
         # Ensure we always return a predictable type (list[dict]).
         if not isinstance(data,list):
-            return[]
+            raise ValueError("Unexpected API payload (expected list)")
+        
         return[x for x in data if isinstance(x, dict)]

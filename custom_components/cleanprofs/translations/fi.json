@@ -1,0 +1,30 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Vain yksi CleanProfs-määritys on sallittu.",
+      "already_configured": "CleanProfs on jo määritetty."
+    },
+    "error": {
+      "cannot_connect": "Yhteyttä ei voitu muodostaa.",
+      "invalid_auth": "Virheellinen tunnistautuminen.",
+      "unknown": "Odottamaton virhe."
+    },
+    "step": {
+      "user": {
+        "title": "CleanProfs",
+        "description": "Anna osoitetietosi.",
+        "data": {
+          "zipcode": "Postinumero",
+          "house_number": "Katunumero"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "cleaning": {
+        "name": "Siivous tänään"
+      }
+    }
+  }
+}

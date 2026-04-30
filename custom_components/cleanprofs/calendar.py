@@ -15,7 +15,7 @@ from .util import _norm, parseIsoDate
 
 # Create the calendar entity for the config entry.
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
-    coordinator = hass.data[DOMAIN]["coordinator"]
+    coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
     async_add_entities([CleanProfsCalendar(coordinator)])
 
 class CleanProfsCalendar(CoordinatorEntity, CalendarEntity):

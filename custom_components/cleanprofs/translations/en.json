@@ -3,6 +3,11 @@
     "abort": {
       "single_instance_allowed": "Only one CleanProfs configuration is allowed."
     },
+    "error": {
+      "cannot_connect": "Cannot connect.",
+      "invalid_auth": "Invalid authentication.",
+      "unknown": "Unexpected error."
+    },
     "step": {
       "user": {
         "title": "CleanProfs",
@@ -12,6 +17,11 @@
           "house_number": "House number"
         }
       }
+    }
+  },
+  "entity":{
+    "binary_sensor":{
+      "cleaning": {"name": "Cleaning today"}
     }
   }
 }

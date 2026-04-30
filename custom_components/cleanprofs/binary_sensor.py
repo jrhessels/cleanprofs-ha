@@ -13,11 +13,11 @@ from .util import isoToday, nextDate
 
 # Create binary sensor entities for the config entry.
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry,async_add_entities: AddEntitiesCallback):
-    coordinator = hass.data[DOMAIN]["coordinator"]
+    coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
 
     desc = BinarySensorEntityDescription(
         key="cleaning",
-        name= "Cleanprofs Cleaning",
+        translation_key= "cleaning",
         icon="mdi:trash-can"
     )
 

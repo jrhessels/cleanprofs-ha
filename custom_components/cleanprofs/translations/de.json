@@ -1,0 +1,28 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Er is al een CleanProfs-configuratie aanwezig.",
+      "already_configured": "CleanProfs is al geconfigureerd."
+    },
+    "error": {
+      "cannot_connect": "kan geen verbinding maken.",
+      "invalid_auth": "Ongeldige authenticaatie",
+      "unknown": "Onverwachte fout."
+    },
+    "step": {
+      "user": {
+        "title": "CleanProfs",
+        "description": "Vul je adresgegevens in.",
+        "data": {
+          "zipcode": "Postcode",
+          "house_number": "Huisnummer"
+        }
+      }
+    }
+  },
+  "entity":{
+    "binary_sensor":{
+      "cleaning": {"name": "schoonmaken"}
+    }
+  }
+}

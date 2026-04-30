@@ -28,27 +28,25 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     async def dailyRefresh(now):
         await coordinator.async_request_refresh()
     
-    removeListener = async_track_time_change(
-        hass,
-        dailyRefresh,
-        hour=0,
-        minute=5,
-        second=0
-    )
+    removeListener = async_track_time_change(hass, dailyRefresh, hour=0, minute=5, second=0)
 
-    hass.data[DOMAIN]["coordinator"] = coordinator
-    hass.data[DOMAIN]["removeListener"] = removeListener
+    hass.data[DOMAIN][entry.entry_id] = {
+        "coordinator": coordinator,
+        "removeListener": removeListener
+    }    
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 # Unload the integration and clean up scheduled listeners/entities
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    data = hass.data.get(DOMAIN, {})
-    if data.get("removeListener"):
-        data["removeListener"]()
+    entry_data = hass.data.get(DOMAIN, {}).pop(entry.entry_id, None)
     
+    if entry_data and (remove := entry_data.get("removeListener")):
+        remove()
+
     unloaded = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+    
     if unloaded and DOMAIN in hass.data:
         hass.data.pop(DOMAIN, None)
     

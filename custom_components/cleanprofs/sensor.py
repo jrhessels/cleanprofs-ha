@@ -11,12 +11,8 @@ from .entity import CleanProfsBaseEntity
 from .util import nextDate
 
 
-async def async_setup_entry(
-    hass: HomeAssistant,
-    entry: ConfigEntry,
-    async_add_entities: AddEntitiesCallback,
-):
-    coordinator = hass.data[DOMAIN]["coordinator"]
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback ):
+    coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
 
     entities = []
     for productName in FIXED_PRODUCTS:

@@ -34,12 +34,7 @@ _MANIFEST_VERSION = _read_manifest_version()
 
 
 class CleanProfsBaseEntity(CoordinatorEntity):
-    """Base Entity for all CleanProfs entities.
-
-    All entities that inherit from this class will automatically:
-        - be linked to the same Home Assistant "Device" (via identifiers),
-        - show consistent device metadata (manufacturer/model/software version).
-    """
+    """Base Entity for all CleanProfs entities."""
 
     # Let HA treat the entity name as a sub-name under the device name
     # (often results in nicer naming in the UI)

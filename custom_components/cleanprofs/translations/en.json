@@ -1,7 +1,8 @@
 {
   "config": {
     "abort": {
-      "single_instance_allowed": "Only one CleanProfs configuration is allowed."
+      "single_instance_allowed": "A CleanProfs configuration already exists.",
+      "already_configured": "CleanProfs is already configured."
     },
     "error": {
       "cannot_connect": "Cannot connect.",
@@ -13,15 +14,23 @@
         "title": "CleanProfs",
         "description": "Enter your address details.",
         "data": {
-          "zipcode": "Zipcode",
+          "zipcode": "Postal code",
           "house_number": "House number"
         }
       }
     }
   },
-  "entity":{
-    "binary_sensor":{
-      "cleaning": {"name": "Cleaning today"}
+  "entity": {
+    "binary_sensor": {
+      "cleaning": { "name": "Cleaning" }
+    },
+    "sensor": {
+      "cleaning_gft": { "name": "Green waste cleaning" },
+      "cleaning_rest": { "name": "Residual waste cleaning" },
+      "cleaning_plastic": { "name": "Plastic cleaning" }
+    },
+    "calendar": {
+      "schedule": { "name": "CleanProfs cleaning schedule" }
     }
   }
 }

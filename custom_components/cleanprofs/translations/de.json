@@ -1,28 +1,36 @@
 {
   "config": {
     "abort": {
-      "single_instance_allowed": "Er is al een CleanProfs-configuratie aanwezig.",
-      "already_configured": "CleanProfs is al geconfigureerd."
+      "single_instance_allowed": "Es ist bereits eine CleanProfs-Konfiguration vorhanden.",
+      "already_configured": "CleanProfs ist bereits konfiguriert."
     },
     "error": {
-      "cannot_connect": "kan geen verbinding maken.",
-      "invalid_auth": "Ongeldige authenticaatie",
-      "unknown": "Onverwachte fout."
+      "cannot_connect": "Verbindung nicht möglich.",
+      "invalid_auth": "Ungültige Authentifizierung.",
+      "unknown": "Unerwarteter Fehler."
     },
     "step": {
       "user": {
         "title": "CleanProfs",
-        "description": "Vul je adresgegevens in.",
+        "description": "Geben Sie Ihre Adressdaten ein.",
         "data": {
-          "zipcode": "Postcode",
-          "house_number": "Huisnummer"
+          "zipcode": "Postleitzahl",
+          "house_number": "Hausnummer"
         }
       }
     }
   },
-  "entity":{
-    "binary_sensor":{
-      "cleaning": {"name": "schoonmaken"}
+  "entity": {
+    "binary_sensor": {
+      "cleaning": { "name": "Reinigung" }
+    },
+    "sensor": {
+      "cleaning_gft": { "name": "Reinigung Biomüll" },
+      "cleaning_rest": { "name": "Reinigung Restmüll" },
+      "cleaning_plastic": { "name": "Reinigung Kunststoff" }
+    },
+    "calendar": {
+      "schedule": { "name": "CleanProfs Reinigungsplan" }
     }
   }
 }

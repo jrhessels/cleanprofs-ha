@@ -1,0 +1,36 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Er is al een CleanProfs-configuratie aanwezig.",
+      "already_configured": "CleanProfs is al geconfigureerd."
+    },
+    "error": {
+      "cannot_connect": "kan geen verbinding maken.",
+      "invalid_auth": "Ongeldige authenticaatie",
+      "unknown": "Onverwachte fout."
+    },
+    "step": {
+      "user": {
+        "title": "CleanProfs",
+        "description": "Vul je adresgegevens in.",
+        "data": {
+          "zipcode": "Postcode",
+          "house_number": "Huisnummer"
+        }
+      }
+    }
+  },
+  "entity":{
+    "binary_sensor":{
+      "cleaning": {"name": "schoonmaken"}
+    },
+    "sensor":{
+      "cleaning_gft": {"name": "Schoomaak Groen"},
+      "cleaning_rest": {"name": "Schoomaak Rest"},
+      "cleaning_plastic": {"name": "Schoomaak Plastic"}
+    },
+    "calendar": {
+      "schedule": { "name": "Cleanprofs reinigings schema" }
+    }
+  }
+}

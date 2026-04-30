@@ -26,7 +26,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry,async_add_en
 class CleanProfsCleaningBinarySensor(CleanProfsBaseEntity, BinarySensorEntity):
     # Binary sensor that turns on when *any* product has to be cleaned
     _attr_has_entity_name = True
-
+    
     def __init__(self, coordinator, entry: ConfigEntry, description: BinarySensorEntityDescription) -> None:
         super().__init__(coordinator, entry)
         self.entity_description = description

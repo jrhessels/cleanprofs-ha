@@ -1,0 +1,36 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Konfigurace CleanProfs již existuje.",
+      "already_configured": "CleanProfs je již nakonfigurován."
+    },
+    "error": {
+      "cannot_connect": "Nelze se připojit.",
+      "invalid_auth": "Neplatné ověření.",
+      "unknown": "Neočekávaná chyba."
+    },
+    "step": {
+      "user": {
+        "title": "CleanProfs",
+        "description": "Zadejte údaje o adrese.",
+        "data": {
+          "zipcode": "PSČ",
+          "house_number": "Číslo domu"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "cleaning": { "name": "Čištění" }
+    },
+    "sensor": {
+      "cleaning_gft": { "name": "Čištění bioodpadu" },
+      "cleaning_rest": { "name": "Čištění směsného odpadu" },
+      "cleaning_plastic": { "name": "Čištění plastů" }
+    },
+    "calendar": {
+      "schedule": { "name": "Harmonogram čištění CleanProfs" }
+    }
+  }
+}

@@ -18,7 +18,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     for productName in FIXED_PRODUCTS:
         desc = SensorEntityDescription(
             key=f"cleaning_date_{productName}".lower(),
-            name=f"{productName} cleaning date",
+            translation_key=f"cleaning_{productName}",
             icon="mdi:calendar-arrow-right",
         )
         entities.append(CleanProfsNextDateSensor(coordinator, entry, desc, productName))
@@ -27,6 +27,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 
 
 class CleanProfsNextDateSensor(CleanProfsBaseEntity, SensorEntity):
+    _attr_has_entity_name = True
+    
     def __init__(
         self,
         coordinator,

@@ -1,7 +1,7 @@
 {
   "config": {
     "abort": {
-      "single_instance_allowed": "Vain yksi CleanProfs-määritys on sallittu.",
+      "single_instance_allowed": "CleanProfs-määritys on jo olemassa.",
       "already_configured": "CleanProfs on jo määritetty."
     },
     "error": {
@@ -12,19 +12,25 @@
     "step": {
       "user": {
         "title": "CleanProfs",
-        "description": "Anna osoitetietosi.",
+        "description": "Syötä osoitetietosi.",
         "data": {
           "zipcode": "Postinumero",
-          "house_number": "Katunumero"
+          "house_number": "Talonumero"
         }
       }
     }
   },
   "entity": {
     "binary_sensor": {
-      "cleaning": {
-        "name": "Siivous tänään"
-      }
+      "cleaning": { "name": "Siivous" }
+    },
+    "sensor": {
+      "cleaning_gft": { "name": "Biojätteen pesu" },
+      "cleaning_rest": { "name": "Sekajätteen pesu" },
+      "cleaning_plastic": { "name": "Muovijätteen pesu" }
+    },
+    "calendar": {
+      "schedule": { "name": "CleanProfsin puhdistuskalenteri" }
     }
   }
 }

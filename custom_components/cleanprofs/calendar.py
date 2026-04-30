@@ -16,12 +16,12 @@ from .util import _norm, parseIsoDate
 # Create the calendar entity for the config entry.
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
     coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
-    async_add_entities([CleanProfsCalendar(coordinator)])
+    async_add_entities([CleanProfsCalendar(coordinator, entry)])
 
 class CleanProfsCalendar(CoordinatorEntity, CalendarEntity):
     # Calendat entity that exposes pickup dates as all-day events,
     _attr_has_entity_name = True
-    _attr_name = "Cleanrpofs Schedule" 
+    _attr_translation_key = "schedule"
     _attr_icon = "mdi:calendar-trash"
     _attr_unique_id = "cleanprofs_calendar"
 

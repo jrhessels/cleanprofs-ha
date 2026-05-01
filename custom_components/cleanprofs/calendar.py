@@ -22,7 +22,7 @@ class CleanProfsCalendar(CoordinatorEntity, CalendarEntity):
     # Calendat entity that exposes pickup dates as all-day events,
     _attr_has_entity_name = True
     _attr_translation_key = "schedule"
-    _attr_icon = "mdi:calendar-trash"
+    _attr_icon = "mdi:water"
     _attr_unique_id = "cleanprofs_calendar"
 
     # Initialize the calendar with a coordinator and the fixed product set.
@@ -72,11 +72,11 @@ class CleanProfsCalendar(CoordinatorEntity, CalendarEntity):
                 continue
 
             # Create an all-day event (00:00 -> next day 00:00) in local HA timezone.
-            start = datetime(d.year, d.month, d.day, 7, 0, 0, tzinfo=tz)
-            end = datetime(d.year, d.month, d.day, 19, 0, 0, tzinfo=tz)
+            start = d
+            end = d + timedelta(days=1)
 
             # Only include events that overlap the requested range.
-            if end <= start_date or start >= end_date:
+            if end <= start_date.date() or start >= end_date.date():
                 continue
 
             p = _norm(productNameApi)

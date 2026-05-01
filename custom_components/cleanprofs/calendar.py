@@ -26,10 +26,10 @@ class CleanProfsCalendar(CoordinatorEntity, CalendarEntity):
     _attr_unique_id = "cleanprofs_calendar"
 
     # Initialize the calendar with a coordinator and the fixed product set.
-    def __init__(self, coordinator) -> None:
+    def __init__(self, coordinator, entry: ConfigEntry,) -> None:
         super().__init__(coordinator)
         self.products = set(FIXED_PRODUCTS)
-        self._attr_unique_id = "cleanprofs_calendar"
+        self._attr_unique_id = f"{entry.entry_id}_cleanprofs_calendar".lower()
         self._event: CalendarEvent | None = None
     
     # Return the next upcoming event; HA calls this to determine the calendar entity state.
